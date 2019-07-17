@@ -1,0 +1,7 @@
+﻿<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteRule ^inicio/?$ inicio.php [NC,L]
+  RewriteRule ^404/?$ error_404.php [NC,L]
+  RewriteRule ^diversos/?$ /diversos.php [NC,L]
+</IfModule>
