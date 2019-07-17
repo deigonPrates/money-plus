@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e42a59d6-daf0-4235-8ea6-7529dcb0189a" name="Default Changelist" comment="" />
+    <list default="true" id="e42a59d6-daf0-4235-8ea6-7529dcb0189a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/inc/conecta.php" beforeDir="false" afterPath="$PROJECT_DIR$/file/inc/conecta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/inc/diversos/usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/file/inc/diversos/usuario.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,20 +29,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/file/inc/diversos/usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="442">
+              <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+              <folding>
+                <element signature="n#script#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diversos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
+            <state relative-caret-position="255">
               <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index_conf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -49,20 +66,6 @@
               <caret line="33" column="10" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="10" />
               <folding>
                 <element signature="e#303#327#0" />
-                <element signature="e#355#412#0" />
-                <element signature="e#437#488#0" />
-                <element signature="e#500#551#0" />
-                <element signature="e#566#654#0" />
-                <element signature="e#678#825#0" />
-                <element signature="e#837#956#0" />
-                <element signature="e#969#1073#0" />
-                <element signature="e#1081#1247#0" />
-                <element signature="e#1258#1319#0" />
-                <element signature="e#1330#1352#0" />
-                <element signature="e#1365#1430#0" />
-                <element signature="e#1449#1495#0" />
-                <element signature="e#1506#1558#0" />
-                <element signature="e#1576#1609#0" />
               </folding>
             </state>
           </provider>
@@ -86,6 +89,9 @@
       <find>container</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -101,9 +107,10 @@
         <option value="$PROJECT_DIR$/file/ini/diversos/usuario.php" />
         <option value="$PROJECT_DIR$/file/inc/diversos/error_404.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/file/inc/diversos/usuario.php" />
         <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/diversos.php" />
+        <option value="$PROJECT_DIR$/file/inc/conecta.php" />
+        <option value="$PROJECT_DIR$/file/inc/diversos/usuario.php" />
       </list>
     </option>
   </component>
@@ -113,11 +120,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-16" />
     <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -128,23 +134,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="controle_gastos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="controle_gastos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="controle_gastos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="controle_gastos" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="controle_gastos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="controle_gastos" type="462c0819:PsiDirectoryNode" />
-              <item name="file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="controle_gastos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="controle_gastos" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="money-plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="money-plus" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -156,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../prefeituras" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -200,17 +191,18 @@
       <workItem from="1563322659123" duration="963000" />
       <workItem from="1563323703939" duration="2776000" />
       <workItem from="1563367737707" duration="12335000" />
+      <workItem from="1563384206425" duration="2185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18418000" />
+    <option name="totallyTimeSpent" value="20603000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-16" y="0" width="1382" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -254,9 +246,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htacess">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.htacess" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/superglobals/_superglobals.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -268,13 +258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="568" column="9" selection-start-line="568" selection-start-column="9" selection-end-line="568" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-line="1" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -292,13 +275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/file/inc/conecta.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/file/inc/diversos/error_404.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -313,41 +289,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/file/inc/diversos/usuario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="33" column="10" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="10" />
           <folding>
             <element signature="e#303#327#0" />
-            <element signature="e#355#412#0" />
-            <element signature="e#437#488#0" />
-            <element signature="e#500#551#0" />
-            <element signature="e#566#654#0" />
-            <element signature="e#678#825#0" />
-            <element signature="e#837#956#0" />
-            <element signature="e#969#1073#0" />
-            <element signature="e#1081#1247#0" />
-            <element signature="e#1258#1319#0" />
-            <element signature="e#1330#1352#0" />
-            <element signature="e#1365#1430#0" />
-            <element signature="e#1449#1495#0" />
-            <element signature="e#1506#1558#0" />
-            <element signature="e#1576#1609#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file/inc/conecta.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diversos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
+        <state relative-caret-position="255">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file/inc/diversos/usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+          <folding>
+            <element signature="n#script#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

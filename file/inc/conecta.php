@@ -1,6 +1,6 @@
 <?php
 
-define('URL_SITE', 'http://' . $_SERVER['HTTP_HOST'] . '/controle_gastos/');
+define('URL_SITE', 'http://' . $_SERVER['HTTP_HOST'] . '/money-plus/');
 
 
 $host = 'localhost';
