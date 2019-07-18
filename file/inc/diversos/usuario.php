@@ -3,19 +3,30 @@ if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
 
     $erros = array();
 
-    if ($_POST['senha'] === $_POST['confirmacao_senha']) {
-        if (!existe_nome($_POST['nome'], $conexao)) {
+    if ($_POST['codigo']) {
+
+        if ($_POST['senha'] === $_POST['confirmacao_senha']) {
             $senha = hash('sha512', $_POST['senha']);
-            $sql_insert = "insert into usuarios(nome,senha, status) value('{$_POST['nome']}','{$senha}','1')";
+            $sql_insert = "update usuarios set nome = '{$_POST['nome']}' ,senha = '$senha' where codigo = {$_POST['codigo']}";
             mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
         } else {
-            $erros[] = 'Ja existe esse nome salvo na nossa base, favor use outro';
+            $erros[] = 'As senhas nao conferem';
         }
-
     } else {
-        $erros[] = 'As senhas nao conferem';
+        if ($_POST['senha'] === $_POST['confirmacao_senha']) {
+            if (!existe_nome($_POST['nome'], $conexao)) {
+                $senha = hash('sha512', $_POST['senha']);
+                $sql_insert = "insert into usuarios(nome,senha, status) value('{$_POST['nome']}','{$senha}','1')";
+                mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
+            } else {
+                $erros[] = 'Ja existe esse nome salvo na nossa base, favor use outro';
+            }
 
+        } else {
+            $erros[] = 'As senhas nao conferem';
+        }
     }
+
 
     if (count($erros) > 0) {
         $error = implode(',', $erros);
@@ -33,6 +44,12 @@ if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
 $sql_usuarios = "SELECT * FROM USUARIOS limit 5";
 $obj_usuarios = mysqli_query($conexao, $sql_usuarios);
 
+
+if ($_GET['id']) {
+    $sql_usuarios = "SELECT * FROM USUARIOS WHERE codigo = '{$_GET['id']}'";
+    $obj_usuarios = mysqli_query($conexao, $sql_usuarios);
+    $usuario = $obj_usuarios->fetch_object();
+}
 
 /**
  * @param $nome
@@ -58,23 +75,29 @@ function existe_nome($nome, $conexao)
         <li><a href="<?= URL_SITE ?>diversos/usuario">Usuário</a></li>
     </ul>
 </div>
-<div class="user-index">
+<div class="user-index" <?= ($_GET['id']) ? " style='display:none'" : ' ' ?>>
     <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
     <button class="btn-azul" onclick="abrirListagem()">Listar</button>
 </div>
 
-<div class="user-cadastro">
+<div class="user-cadastro" <?= ($_GET['id']) ? " style='display:block'" : '' ?>>
 
     <form action="<?= URL_SITE ?>diversos/usuario" method="post" class="form">
-        <input type="text" name="nome" id="nome" placeholder="Nome de usuário" required>
+        <?php
+        if ($_GET['id']) {
+            echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
+        }
+        ?>
+        <input type="text" name="nome" id="nome" value="<?= $usuario->nome ?>" placeholder="Nome de usuário" required>
         <input type="password" name="senha" id="senha" onblur="validPass()" placeholder="Senha" required>
         <input type="password" name="confirmacao_senha" id="confirmacao_senha" onblur="validPass()"
                placeholder="Repita a senha" required>
         <label id="error">As senhas não conferem</label>
-        <button type="button" onclick="validForm()" id="btn-save"> Cadastrar</button>
+        <button type="button" onclick="validForm()"
+                id="btn-save">  <?= ($_GET['id']) ? " Salvar" : 'Cadastrar' ?></button>
     </form>
 </div>
-<div class="user-listagem">
+<div class="user-listagem" <?= ($_GET['id']) ? " style='display:none'" : '' ?>>
     <table id="customers">
         <tr>
             <th>Código</th>
@@ -83,14 +106,16 @@ function existe_nome($nome, $conexao)
             <th>Ação</th>
         </tr>
 
-        <? while($usuario = $obj_usuarios->fetch_object()){?>
+        <? $cont = 1; ?>
+        <? while ($usuario = $obj_usuarios->fetch_object()) { ?>
             <tr>
-                <td><?=$usuario->codigo?></td>
-                <td><?=$usuario->nome?></td>
-                <td><?=($usuario->status == 1)? 'Ativo': 'Inativo'?></td>
-                <td><span>Editar</span></td>
+                <td><?= $cont ?></td>
+                <td><?= $usuario->nome ?></td>
+                <td><?= ($usuario->status == 1) ? 'Ativo' : 'Inativo' ?></td>
+                <td><a href="<?= URL_SITE ?>diversos/usuario/edt?id=<?= $usuario->codigo ?>">Editar</a></td>
             </tr>
-        <?}?>
+            <? $cont++; ?>
+        <? } ?>
     </table>
 </div>
 

@@ -145,6 +145,7 @@ img {
 .user-cadastro, .user-listagem {
     display: none;
 }
+
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -156,9 +157,13 @@ img {
     padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+    background-color: #ddd;
+}
 
 #customers th {
     padding-top: 12px;
@@ -175,9 +180,11 @@ img {
     padding: 3%;
     margin: 3px
 }
-.navega{
-    padding: 2%!important;
+
+.navega {
+    padding: 2% !important;
 }
+
 .navega ul li {
     display: inline;
 }
