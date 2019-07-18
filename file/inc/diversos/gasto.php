@@ -1,4 +1,4 @@
-<?
+<?php
 $sql_despesa = "SELECT * FROM despesas";
 $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
@@ -68,9 +68,9 @@ function formatDate($data){
         ?>
         <select name="despesas_codigo" id="despesas_codigo" required>
             <option value=''>Selecione uma despesa</option>
-            <? while ($despesa = $obj_despesas->fetch_object()) { ?>
+            <?php while ($despesa = $obj_despesas->fetch_object()) { ?>
                 <option value='<?= $despesa->codigo ?>' <? if(($gasto->despesas_codigo) and ($despesa->codigo)){ echo 'selected';}?>><?= $despesa->nome ?></option>
-            <? } ?>
+            <?php } ?>
 
         </select>
         <input type="date" name="data" id="data" value="<? if($gasto->data){ echo $gasto->data;}else{ echo DATE('Y-m-d');}?>" required>
@@ -92,8 +92,8 @@ function formatDate($data){
             <th>Valor</th>
             <th>Ação</th>
         </tr>
-        <? $cont = 1; ?>
-        <? while ($gasto = $obj_gastos->fetch_object()) { ?>
+        <?php $cont = 1; ?>
+        <?php while ($gasto = $obj_gastos->fetch_object()) { ?>
             <tr>
                 <td><?= $cont ?></td>
                 <td><?= formatDate($gasto->data) ?></td>

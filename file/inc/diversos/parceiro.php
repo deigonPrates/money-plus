@@ -1,4 +1,4 @@
-<?
+<?php
 if (($_POST['nome'])) {
 
     $erros = array();
@@ -93,16 +93,16 @@ function existe_nome($nome, $conexao)
             <th>Ação</th>
         </tr>
 
-        <? $cont = 1; ?>
-        <? while ($parceiro = $obj_parceiros->fetch_object()) { ?>
+        <?php $cont = 1; ?>
+        <?php while ($parceiro = $obj_parceiros->fetch_object()) { ?>
             <tr>
                 <td><?= $cont ?></td>
                 <td><?= $parceiro->nome ?></td>
                 <td><?= ($parceiro->status == 1) ? 'Ativo' : 'Inativo' ?></td>
                 <td><a href="<?= URL_SITE ?>diversos/parceiro/edt?id=<?= $parceiro->codigo ?>">Editar</a></td>
             </tr>
-            <? $cont++; ?>
-        <? } ?>
+            <?php $cont++; ?>
+        <?php } ?>
     </table>
 </div>
 

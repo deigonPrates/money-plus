@@ -1,4 +1,4 @@
-<?
+<?php
 if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
 
     $erros = array();
@@ -106,16 +106,16 @@ function existe_nome($nome, $conexao)
             <th>Ação</th>
         </tr>
 
-        <? $cont = 1; ?>
-        <? while ($usuario = $obj_usuarios->fetch_object()) { ?>
+        <?php $cont = 1; ?>
+        <?php while ($usuario = $obj_usuarios->fetch_object()) { ?>
             <tr>
                 <td><?= $cont ?></td>
                 <td><?= $usuario->nome ?></td>
                 <td><?= ($usuario->status == 1) ? 'Ativo' : 'Inativo' ?></td>
                 <td><a href="<?= URL_SITE ?>diversos/usuario/edt?id=<?= $usuario->codigo ?>">Editar</a></td>
             </tr>
-            <? $cont++; ?>
-        <? } ?>
+            <?php $cont++; ?>
+        <?php } ?>
     </table>
 </div>
 

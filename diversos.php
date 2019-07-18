@@ -49,7 +49,7 @@ if(!$_SESSION['logado']){
 
 <main class="container">
 
-<?
+<?php
     $url = explode('/',$_SERVER[REQUEST_URI]);
     $lk = !is_null($url[3])? $url[3] : 'error_404';
     require_once file_exists("file/inc/diversos/$lk.php")? "file/inc/diversos/$lk.php": "file/inc/diversos/error_404.php";

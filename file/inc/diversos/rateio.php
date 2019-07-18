@@ -1,4 +1,4 @@
-<?
+<?php
 $sql_gasto = "SELECT * FROM gastos";
 $obj_gastos = mysqli_query($conexao, $sql_gasto) or die(mysqli_error($conexao));
 
@@ -108,8 +108,8 @@ function formatDate($data){
             <th>Status</th>
             <th>Ação</th>
         </tr>
-        <? $cont = 1; ?>
-        <? while ($rateio = $obj_rateios->fetch_object()) { ?>
+        <?php $cont = 1; ?>
+        <?php while ($rateio = $obj_rateios->fetch_object()) { ?>
             <tr>
                 <td><?= $cont ?></td>
                 <td><?= $rateio->descricao ?></td>
@@ -118,8 +118,8 @@ function formatDate($data){
                 <td><?= ($rateio->parceiro== 0) ?'Pendente' : 'Pago'?></td>
                 <td><a href="<?= URL_SITE ?>diversos/rateio/edt?id=<?= $gasto->codigo ?>">Editar</a></td>
             </tr>
-            <? $cont++; ?>
-        <? } ?>
+            <?php $cont++; ?>
+        <?php } ?>
     </table>
 </div>
 

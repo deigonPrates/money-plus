@@ -1,4 +1,4 @@
-<?
+<?php
 if (($_POST['nome']) and ($_POST['vencimento'])) {
 
     $erros = array();
@@ -91,16 +91,16 @@ function existe_nome($nome, $conexao)
             <th>Ação</th>
         </tr>
 
-        <? $cont = 1; ?>
-        <? while ($despesa = $obj_despesas->fetch_object()) { ?>
+        <?php $cont = 1; ?>
+        <?php while ($despesa = $obj_despesas->fetch_object()) { ?>
             <tr>
                 <td><?= $cont ?></td>
                 <td><?= $despesa->nome ?></td>
                 <td><?= $despesa->vencimento ?></td>
                 <td><a href="<?= URL_SITE ?>diversos/despesa/edt?id=<?= $despesa->codigo ?>">Editar</a></td>
             </tr>
-            <? $cont++; ?>
-        <? } ?>
+            <?php $cont++; ?>
+        <?php } ?>
     </table>
 </div>
 
