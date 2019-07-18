@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e42a59d6-daf0-4235-8ea6-7529dcb0189a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file/inc/diversos/usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/file/inc/diversos/usuario.php" afterDir="false" />
     </list>
@@ -27,16 +28,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/file/inc/diversos/usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="52" column="68" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
+            <state>
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
               <folding>
+                <element signature="e#3#945#0#PHP" />
                 <element signature="n#existe_nome#0;n#!!top" />
-                <element signature="e#1528#2550#0#HTML" />
-                <element signature="e#2576#2913#0#HTML" />
-                <element signature="e#2944#3409#0#HTML" />
+                <element signature="n#script#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diversos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
+            <state relative-caret-position="255">
               <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
             </state>
           </provider>
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="158" column="15" lean-forward="true" selection-start-line="158" selection-start-column="15" selection-end-line="158" selection-end-column="15" />
+            <state relative-caret-position="335">
+              <caret line="163" column="22" lean-forward="true" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
               <folding>
                 <element signature="e#303#327#0" />
               </folding>
@@ -88,6 +88,7 @@
       <find>da6709</find>
       <find>btn-cadastrar</find>
       <find>container</find>
+      <find>user-listagem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,18 +193,19 @@
       <workItem from="1563322659123" duration="963000" />
       <workItem from="1563323703939" duration="2776000" />
       <workItem from="1563367737707" duration="12335000" />
-      <workItem from="1563384206425" duration="5618000" />
+      <workItem from="1563384206425" duration="6412000" />
+      <workItem from="1563413050652" duration="2373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24036000" />
+    <option name="totallyTimeSpent" value="27203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="0" width="1382" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -290,13 +292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index_conf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/file/inc/conecta.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -306,30 +301,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/diversos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
+        <state relative-caret-position="255">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/index_conf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="158" column="15" lean-forward="true" selection-start-line="158" selection-start-column="15" selection-end-line="158" selection-end-column="15" />
-          <folding>
-            <element signature="e#303#327#0" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/file/inc/diversos/usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="52" column="68" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
+        <state>
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
+            <element signature="e#3#945#0#PHP" />
             <element signature="n#existe_nome#0;n#!!top" />
-            <element signature="e#1528#2550#0#HTML" />
-            <element signature="e#2576#2913#0#HTML" />
-            <element signature="e#2944#3409#0#HTML" />
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="163" column="22" lean-forward="true" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
+          <folding>
+            <element signature="e#303#327#0" />
           </folding>
         </state>
       </provider>

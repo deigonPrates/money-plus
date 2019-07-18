@@ -29,6 +29,11 @@ if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
     }
 }
 
+
+$sql_usuarios = "SELECT * FROM USUARIOS limit 5";
+$obj_usuarios = mysqli_query($conexao, $sql_usuarios);
+
+
 /**
  * @param $nome
  * @return bool
@@ -49,8 +54,8 @@ function existe_nome($nome, $conexao)
 ?>
 <div class="navega">
     <ul>
-        <li><a href="<?=URL_SITE?>inicio">Inicio</a></li>
-        <li><a href="<?=URL_SITE?>diversos/usuario">Usuário</a></li>
+        <li><a href="<?= URL_SITE ?>inicio">Inicio</a></li>
+        <li><a href="<?= URL_SITE ?>diversos/usuario">Usuário</a></li>
     </ul>
 </div>
 <div class="user-index">
@@ -70,7 +75,23 @@ function existe_nome($nome, $conexao)
     </form>
 </div>
 <div class="user-listagem">
+    <table id="customers">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
 
+        <? while($usuario = $obj_usuarios->fetch_object()){?>
+            <tr>
+                <td><?=$usuario->codigo?></td>
+                <td><?=$usuario->nome?></td>
+                <td><?=($usuario->status == 1)? 'Ativo': 'Inativo'?></td>
+                <td><span>Editar</span></td>
+            </tr>
+        <?}?>
+    </table>
 </div>
 
 
