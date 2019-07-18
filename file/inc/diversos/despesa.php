@@ -4,7 +4,7 @@ if (($_POST['nome']) and ($_POST['vencimento'])) {
     $erros = array();
 
     if ($_POST['codigo']) {
-        $sql_update = "update despesas set nome = '{$_POST['nome']}' , vencimento = '{$_POST['nome']}' where codigo = {$_POST['codigo']}";
+        $sql_update = "update despesas set nome = '{$_POST['nome']}' , vencimento = '{$_POST['vencimento']}' where codigo = {$_POST['codigo']}";
         mysqli_query($conexao, $sql_update) or die('Erro ao editar:' . $sql_update);
 
     } else {
@@ -33,7 +33,7 @@ $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexa
 
 
 if ($_GET['id']) {
-    $sql_despesa = "SELECT * FROM USUARIOS WHERE codigo = '{$_GET['id']}'";
+    $sql_despesa = "SELECT * FROM despesas WHERE codigo = '{$_GET['id']}'";
     $obj_despesas = mysqli_query($conexao, $sql_despesa);
     $despesa = $obj_despesas->fetch_object();
 }
@@ -76,7 +76,7 @@ function existe_nome($nome, $conexao)
         }
         ?>
         <input type="text" name="nome" id="nome" value="<?= $despesa->nome ?>" placeholder="Nome" required>
-         <input type="number" name="vencimento" id="vencimento" placeholder="01">
+         <input type="number" name="vencimento" value="<?= $despesa->vencimento ?>" id="vencimento" placeholder="01">
         <label id="error"></label>
         <button type="button" onclick="validForm()"
                 id="btn-save">  <?= ($_GET['id']) ? " Salvar" : 'Cadastrar' ?></button>

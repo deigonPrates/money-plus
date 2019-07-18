@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e42a59d6-daf0-4235-8ea6-7529dcb0189a" name="Default Changelist" comment="de">
-      <change afterPath="$PROJECT_DIR$/file/inc/diversos/despesa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file/inc/diversos/despesa.php" beforeDir="false" afterPath="$PROJECT_DIR$/file/inc/diversos/despesa.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/file/inc/diversos/despesa.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
-              <folding>
-                <element signature="e#1556#1758#0#PHP" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="104" selection-start-line="6" selection-start-column="104" selection-end-line="6" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -195,12 +191,12 @@
       <workItem from="1563323703939" duration="2776000" />
       <workItem from="1563367737707" duration="12335000" />
       <workItem from="1563384206425" duration="6412000" />
-      <workItem from="1563413050652" duration="8195000" />
+      <workItem from="1563413050652" duration="8399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33025000" />
+    <option name="totallyTimeSpent" value="33229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="0" width="1382" height="735" extended-state="0" />
@@ -346,11 +342,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/file/inc/diversos/despesa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
-          <folding>
-            <element signature="e#1556#1758#0#PHP" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="104" selection-start-line="6" selection-start-column="104" selection-end-line="6" selection-end-column="104" />
         </state>
       </provider>
     </entry>
