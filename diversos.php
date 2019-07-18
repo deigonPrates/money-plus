@@ -35,14 +35,14 @@ if(!$_SESSION['logado']){
             <li><a href="<?=URL_SITE?>inicio">Inico</a></li>
             <li><a href="#" onclick="showMenu()">Cadastros</a>
                 <ul class="sub-menu" id="sub-menu">
-                    <li><a href="#">Usuários</a></li>
-                    <li><a href="#">Parceiros</a></li>
-                    <li><a href="#">Despesa</a></li>
+                    <li><a href="<?=URL_SITE?>diversos/usuario">Usuários</a></li>
+                    <li><a href="<?=URL_SITE?>diversos/parceiro">Parceiros</a></li>
+                    <li><a href="<?=URL_SITE?>diversos/despesa">Despesa</a></li>
                 </ul>
             </li>
-
-            <li><a href="#">Gasto</a></li>
-            <li><a href="#">Rateio</a></li>
+            <li><a href="<?=URL_SITE?>diversos/gasto">Gasto</a></li>
+            <li><a href="<?=URL_SITE?>diversos/rateo">Rateio</a></li>
+            <li><a href="<?=URL_SITE?>sair">Sair</a></li>
         </ul>
     </nav>
 </header>

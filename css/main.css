@@ -21,7 +21,9 @@ a {
 ul {
     list-style: none;
 }
-
+main{
+    min-height: 373px;
+}
 img {
     max-width: 100%;
 }
@@ -174,7 +176,7 @@ img {
 }
 
 /*FORMULARIO PADRAO*/
-.form input, button, label, navega {
+.form input,select, button, label, navega {
     width: 100%;
     height: 59px;
     padding: 3%;
@@ -202,6 +204,10 @@ img {
     font-size: 22px;
     color: #fff;
 }
+.form select {
+     cursor: pointer;
+     font-size: 22px;
+ }
 
 .form label {
     color: red;
@@ -210,7 +216,6 @@ img {
 
 /* RODAPE*/
 .footer {
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
