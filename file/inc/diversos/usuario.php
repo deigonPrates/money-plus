@@ -100,7 +100,7 @@ function existe_nome($nome, $conexao)
 <div class="user-listagem" <?= ($_GET['id']) ? " style='display:none'" : '' ?>>
     <table id="customers">
         <tr>
-            <th>Código</th>
+            <th>#</th>
             <th>Nome</th>
             <th>Status</th>
             <th>Ação</th>
