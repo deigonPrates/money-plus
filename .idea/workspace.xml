@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e42a59d6-daf0-4235-8ea6-7529dcb0189a" name="Default Changelist" comment="de">
-      <change afterPath="$PROJECT_DIR$/file/inc/diversos/gasto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diversos.php" beforeDir="false" afterPath="$PROJECT_DIR$/diversos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/inicio.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/file/inc/diversos/gasto.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="213">
+              <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
               <folding>
                 <element signature="e#131#1516#0#PHP" />
                 <element signature="n#div#0;n#!!top" />
@@ -47,6 +43,24 @@
                 <element signature="e#4526#4612#0#HTML" />
                 <element signature="e#4643#4729#0#HTML" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/diversos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inicio.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="44" column="53" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -108,11 +122,11 @@
         <option value="$PROJECT_DIR$/file/inc/diversos/parceiro.php" />
         <option value="$PROJECT_DIR$/file/inc/diversos/usuario.php" />
         <option value="$PROJECT_DIR$/file/inc/diversos/despesa.php" />
-        <option value="$PROJECT_DIR$/inicio.php" />
         <option value="$PROJECT_DIR$/index_conf.php" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/diversos.php" />
         <option value="$PROJECT_DIR$/file/inc/diversos/gasto.php" />
+        <option value="$PROJECT_DIR$/inicio.php" />
+        <option value="$PROJECT_DIR$/diversos.php" />
       </list>
     </option>
   </component>
@@ -217,12 +231,12 @@
       <workItem from="1563323703939" duration="2776000" />
       <workItem from="1563367737707" duration="12335000" />
       <workItem from="1563384206425" duration="6412000" />
-      <workItem from="1563413050652" duration="13102000" />
+      <workItem from="1563413050652" duration="13184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37932000" />
+    <option name="totallyTimeSpent" value="38014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="0" width="1382" height="735" extended-state="0" />
@@ -356,24 +370,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inicio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="46" column="13" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="46" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diversos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/file/inc/diversos/gasto.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
+        <state relative-caret-position="213">
+          <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
           <folding>
             <element signature="e#131#1516#0#PHP" />
             <element signature="n#div#0;n#!!top" />
@@ -385,6 +385,20 @@
             <element signature="e#4526#4612#0#HTML" />
             <element signature="e#4643#4729#0#HTML" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inicio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="44" column="53" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diversos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
         </state>
       </provider>
     </entry>

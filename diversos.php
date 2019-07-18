@@ -41,7 +41,7 @@ if(!$_SESSION['logado']){
                 </ul>
             </li>
             <li><a href="<?=URL_SITE?>diversos/gasto">Gasto</a></li>
-            <li><a href="<?=URL_SITE?>diversos/rateo">Rateio</a></li>
+            <li><a href="<?=URL_SITE?>diversos/rateio">Rateio</a></li>
             <li><a href="<?=URL_SITE?>sair">Sair</a></li>
         </ul>
     </nav>
