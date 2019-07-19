@@ -22,7 +22,7 @@ ul {
     list-style: none;
 }
 main{
-    min-height: 373px;
+    min-height: 500px!important;
 }
 img {
     max-width: 100%;
@@ -205,9 +205,9 @@ img {
     color: #fff;
 }
 .form select {
-     cursor: pointer;
-     font-size: 22px;
- }
+    cursor: pointer;
+    font-size: 22px;
+}
 
 .form label {
     color: red;
