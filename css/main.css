@@ -41,6 +41,7 @@ img {
 }
 
 /* HELPERS*/
+
 .bg-white {
     background-color: #fff;
     color: #130400;
@@ -182,7 +183,12 @@ img {
     padding: 3%;
     margin: 3px
 }
-
+#info{
+    text-align: left;
+    text-decoration: #130400;
+    font-weight: bold;
+    font-size: 15px;
+}
 .navega {
     padding: 2% !important;
 }

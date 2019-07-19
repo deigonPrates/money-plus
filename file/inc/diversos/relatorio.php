@@ -5,222 +5,111 @@ $obj_gastos = mysqli_query($conexao, $sql_gasto) or die(mysqli_error($conexao));
 $sql_parceiro = "SELECT * FROM parceiros";
 $obj_parceiros = mysqli_query($conexao, $sql_parceiro) or die(mysqli_error($conexao));
 
-$sql_rateios = "select T2.descricao, T3.nome, T1.valor,T1.status from rateios as T1
-join gastos as T2 on T1.gastos_codigo = T2.codigo
-join parceiros as T3 on T1.parceiros_codigo = T3.codigo";
-$obj_rateios = mysqli_query($conexao, $sql_rateios) or die(mysqli_error($conexao));
+$sql_despesa = "SELECT * FROM despesas";
+$obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
 
+$sql_consulta = "select sum(T1.valor) as total from rateios as T1
+                        join parceiros as T2 on T1.parceiros_codigo = T2.codigo
+                        join gastos as T3 on T1.gastos_codigo = T3.codigo
+                        join despesas as T4 on T3.despesas_codigo = T4.codigo
+                        where T1.codigo is not null";
 
-
-if (isset($_POST['gastos_codigo']) and isset($_POST['parceiros_codigo'])
-    and isset($_POST['valor']) and isset($_POST['status'])) {
-
-    $erros = array();
-
-    if (isset($_POST['codigo'])) {
-        $sql_update = "update rateios set gastos_codigo = '{$_POST['gastos_codigo']}', 
-                                         parceiros_codigo = '{$_POST['parceiros_codigo']}', 
-                                         valor = '{$_POST['valor']}', 
-                                         status = '{$_POST['status']}'
-                                         where codigo = {$_POST['codigo']}";
-        mysqli_query($conexao, $sql_update) or die('Erro ao editar:' . $sql_update);
-    } else {
-        $sql_insert = "insert into rateios(usuarios_codigo,gastos_codigo,parceiros_codigo,valor,status) 
-        value('{$_SESSION['logado']->codigo}','{$_POST['gastos_codigo']}','{$_POST['parceiros_codigo']}'
-        ,'{$_POST['valor']}','{$_POST['status']}')";
-        mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
+if (isset($_POST['search'])) {
+    if (!empty($_POST['parceiro'])) {
+        $sql_consulta .= " and T2.codigo = '{$_POST['parceiro']}'";
+    }
+    if (!empty($_POST['gasto'])) {
+        $sql_consulta .= " and T3.codigo = '{$_POST['gasto']}'";
+    }
+    if (!empty($_POST['despesa'])) {
+        $sql_consulta .= " and T4.codigo = '{$_POST['despesa']}'";
+    }
+    if (!empty($_POST['mes'])) {
+        $sql_consulta .= " and T3.mes = '{$_POST['mes']}'";
     }
 
-    if (count($erros) > 0) {
-        $error = implode(',', $erros);
-        echo "<script>
-                        alert('{$error}');
-              </script>";
-    } else {
-        echo "<script>
-                        alert('Operação realizada com sucesso');
-              </script>";
-    }
+    $obj_consulta = mysqli_query($conexao, $sql_consulta) or die(mysqli_error($conexao));
+    $consulta = $obj_consulta->fetch_object();
 }
 
-if (isset($_GET['id'])) {
-    $sql_rateios = "SELECT * FROM rateios WHERE codigo = '{$_GET['id']}'";
-    $obj_rateios = mysqli_query($conexao, $sql_rateios);
-    $rateio = $obj_rateios->fetch_object();
-}
-
-function formatDate($data){
+function formatDate($data)
+{
     $result = explode('-', $data);
 
-    return $result[2].'/'.$result[1].'/'.$result[0];
+    return $result[2] . '/' . $result[1] . '/' . $result[0];
 }
+
 ?>
 <div class="navega">
     <ul>
         <li><a href="<?php echo URL_SITE; ?>inicio">Inicio</a></li>
-        <li><a href="<?php echo URL_SITE; ?>diversos/rateio">Rateio</a></li>
+        <li><a href="<?php echo URL_SITE; ?>diversos/relatorio">Relatorio</a></li>
     </ul>
 </div>
 <div class="user-index" <?php echo isset($_GET['id']) ? " style='display:none'" : ' '; ?>>
-    <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
-    <button class="btn-azul" onclick="abrirListagem()">Listar</button>
-</div>
-<div class="user-cadastro" <?php echo isset($_GET['id']) ? " style='display:block'" : ''; ?>>
-
-    <form action="<?php echo URL_SITE; ?>diversos/rateio" method="post" class="form">
-        <?php
-        if (isset($_GET['id'])) {
-            echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
-        }
-        ?>
-        <select name="gastos_codigo" id="gastos_codigo" required>
-            <option value=''>Selecione um gasto</option>
-            <?php while ($gasto = $obj_gastos->fetch_object()) { ?>
-                <option value='<?php echo $gasto->codigo; ?>' <?php if(isset($rateio->gastos_codigo) and ($rateio->gastos_codigo == $gasto->codigo)){ echo 'selected';}?>><?php echo $gasto->descricao; ?></option>
-            <?php } ?>
-
-        </select>
-        <select name="parceiros_codigo" id="parceiros_codigo" required>
+    <form action="<?php echo URL_SITE;?>diversos/relatorio" method="post">
+        <input type="hidden" name="search" value="true">
+        <select name="parceiro" id="parceiro">
             <option value=''>Selecione um parceiro</option>
             <?php while ($parceiro = $obj_parceiros->fetch_object()) { ?>
-                <option value='<?php echo $parceiro->codigo; ?>' <?php if(isset($rateio->parceiros_codigo) and ($parceiro->codigo == $rateio->parceiros_codigo)){ echo 'selected';}?>><?php echo $parceiro->nome; ?></option>
+                <option value='<?php echo $parceiro->codigo; ?>'
+                    <?php if (isset($_POST['parceiro']) and ($parceiro->codigo == $_POST['parceiro'])) {
+                    echo 'selected';
+                } ?>><?php echo $parceiro->nome; ?></option>
             <?php } ?>
-
         </select>
-        <select name="status" id="status" required>
-            <option value='0' <?php if(isset($rateio->status) and ($rateio->status == 0)) echo 'selected' ?>>Pendente</option>
-            <option value='1' <?php if(isset($rateio->status) and ($rateio->status == 1)) echo 'selected' ?>>Pago</option>
+        <select name="gasto" id="gastos">
+            <option value=''>Selecione um gasto</option>
+            <?php while ($gasto = $obj_gastos->fetch_object()) { ?>
+                <option value='<?php echo $gasto->codigo; ?>' <?php if (isset($_POST['gasto']) and ($_POST['gasto'] == $gasto->codigo)) {
+                    echo 'selected';
+                } ?>><?php echo $gasto->descricao; ?></option>
+            <?php } ?>
         </select>
-        <input type="text" name="valor" id="valor" value="<?php echo @$gasto->valor; ?>" placeholder="R$ 0,00">
-        <label id="error"></label>
-        <button type="button" onclick="validForm()"
-                id="btn-save">  <?php echo isset($_GET['id']) ? " Salvar" : 'Cadastrar'; ?></button>
+        <select name="despesa" id="despesa">
+            <option value=''>Selecione uma despesa</option>
+            <?php while ($despesa = $obj_despesas->fetch_object()) { ?>
+                <option value='<?php echo $despesa->codigo; ?>'
+                    <?php if (isset($_POST['despesa']) and ($_POST['despesa'] == $despesa->codigo)) {
+                    echo 'selected';
+                } ?>><?php echo $despesa->nome; ?></option>
+            <?php } ?>
+        </select>
+        <select name="mes" id="mes">
+            <option value=''>Selecione um mes</option>
+            <option value='01' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '01')) {
+                    echo 'selected';} ?>>01 - Janeiro</option>
+            <option value='02' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '02')) {
+                    echo 'selected';} ?>>02 - Fevereiro</option>
+            <option value='03' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '03')) {
+                    echo 'selected';} ?>>03 - Março</option>
+            <option value='04' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '04')) {
+                    echo 'selected';} ?>>04 - Abril</option>
+            <option value='05' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '05')) {
+                    echo 'selected';} ?>>05 - Maio</option>
+            <option value='06' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '06')) {
+                    echo 'selected';} ?>>06 - Junho</option>
+            <option value='07' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '07')) {
+                    echo 'selected';} ?>>07 - Julho</option>
+            <option value='08' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '08')) {
+                    echo 'selected';} ?>>08 - Agosto</option>
+            <option value='09' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '09')) {
+                    echo 'selected';} ?>>09 - Setembro</option>
+            <option value='10' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '10')) {
+                    echo 'selected';} ?>>10 - Outubro</option>
+            <option value='11' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '11')) {
+                    echo 'selected';} ?>>11 - Novembro</option>
+            <option value='12' <?php if (isset($_POST['mes']) and ($_POST['mes'] == '12')) {
+                    echo 'selected';} ?>>12 - Dezembro</option>
+        </select>
+        <?php
+        if (isset($consulta->total)) {
+            echo '<label id="info">R$ '.number_format($consulta->total,2,',','.').'</label>';
+        }
+        ?>
+        <button class="btn-azul" type="submit">Visualizar</button>
     </form>
 </div>
-<div class="user-listagem" <?php echo isset($_GET['id']) ? " style='display:none'" : ''; ?>>
-    <table id="customers">
-        <tr>
-            <th>#</th>
-            <th>Gasto</th>
-            <th>Parceiro</th>
-            <th>Valor</th>
-            <th>Status</th>
-            <th>Ação</th>
-        </tr>
-        <?php $cont = 1; ?>
-        <?php while ($rateio = $obj_rateios->fetch_object()) { ?>
-            <tr>
-                <td><?php echo $cont; ?></td>
-                <td><?php echo $rateio->descricao; ?></td>
-                <td><?php echo $rateio->nome; ?></td>
-                <td><?php echo 'R$ '.number_format($rateio->valor,2,',','.'); ?></td>
-                <td><?php echo ($rateio->status == 0) ?'Pendente' : 'Pago';?></td>
-                <td><a href="<?php echo URL_SITE; ?>diversos/rateio/edt?id=<?php echo $gasto->codigo; ?>">Editar</a></td>
-            </tr>
-            <?php $cont++; ?>
-        <?php } ?>
-    </table>
-</div>
 
-
-<script>
-    function validGasto() {
-        var error = '-1';
-        elemento = document.getElementById('gastos_codigo');
-        if (elemento.value === '') {
-            error = (' O campo Gastos é obrigatorio');
-            elemento.style.border = 'solid 1px red';
-        } else {
-            error = '-1';
-            elemento.style.border = '';
-        }
-
-        return error;
-    }
-
-    function validParceiro() {
-        var error = '-1';
-        elemento = document.getElementById('parceiros_codigo');
-        if (elemento.value === '') {
-            error = (' O campo Parceiro é obrigatorio');
-            elemento.style.border = 'solid 1px red';
-        } else {
-            error = '-1';
-            elemento.style.border = '';
-        }
-
-        return error;
-    }
-
-    function validStatus() {
-        var error = '-1';
-        elemento = document.getElementById('status');
-        if (elemento.value === '') {
-            error = (' O campo Status é obrigatorio');
-            elemento.style.border = 'solid 1px red';
-        } else {
-            error = '-1';
-            elemento.style.border = '';
-        }
-
-        return error;
-    }
-
-    function validValor() {
-        var error = '-1';
-        elemento = document.getElementById('valor');
-        if (elemento.value === '') {
-            error = (' O campo Valor é obrigatorio');
-            elemento.style.border = 'solid 1px red';
-        } else {
-            error = '-1';
-            elemento.style.border = '';
-        }
-
-        return error;
-    }
-
-    function validForm() {
-        var erros = new Array();
-
-        if (validGasto() != -1) {
-            erros.push(validGasto());
-        }
-        if (validParceiro() != -1) {
-            erros.push(validParceiro());
-        }
-        if (validStatus() != -1) {
-            erros.push(validStatus());
-        }
-        if (validValor() != -1) {
-            erros.push(validValor());
-        }
-
-        if (erros.length === 0) {
-            $('#btn-save').attr('type', 'submit');
-        } else {
-            document.getElementById('error').innerHTML = (erros.toString());
-            document.getElementById('error').style.display = 'block';
-        }
-
-    }
-
-    function fechaTodasDivs() {
-        $('.user-index').css('display', 'none');
-        $('.user-cadastro').css('display', 'none');
-        $('.user-listagem').css('display', 'none');
-    }
-
-    function abrirCadastro() {
-        fechaTodasDivs();
-        $('.user-cadastro').css('display', 'block');
-    }
-
-    function abrirListagem() {
-        fechaTodasDivs();
-        $('.user-listagem').css('display', 'block');
-    }
-
-</script>
 
