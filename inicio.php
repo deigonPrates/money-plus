@@ -43,6 +43,7 @@ if(!isset($_SESSION['logado'])){
 
             <li><a href="<?php echo URL_SITE;?>diversos/gasto">Gasto</a></li>
             <li><a href="<?php echo URL_SITE;?>diversos/rateio">Rateio</a></li>
+            <li><a href="<?php echo URL_SITE;?>diversos/relatorio">Relatório</a></li>
             <li><a href="<?php echo URL_SITE;?>sair">Sair</a></li>
         </ul>
     </nav>

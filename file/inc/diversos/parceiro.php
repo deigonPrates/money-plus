@@ -1,14 +1,13 @@
 <?php
-if (($_POST['nome'])) {
+if (isset($_POST['nome'])) {
 
     $erros = array();
 
-    if ($_POST['codigo']) {
+    if (isset($_POST['codigo'])) {
         $sql_insert = "update parceiros set nome = '{$_POST['nome']}' where codigo = {$_POST['codigo']}";
         mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
     } else {
         if (!existe_nome($_POST['nome'], $conexao)) {
-            $senha = hash('sha512', $_POST['senha']);
             $sql_insert = "insert into parceiros(nome, status) value('{$_POST['nome']}','1')";
             mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
         } else {
@@ -32,12 +31,12 @@ if (($_POST['nome'])) {
 
 
 $sql_parceiros = "SELECT * FROM parceiros limit 5";
-$obj_parceiros = mysqli_query($conexao, $sql_parceiros);
+$obj_parceiros = mysqli_query($conexao, $sql_parceiros) or die(mysqli_error($conexao));
 
 
-if ($_GET['id']) {
+if (isset($_GET['id'])) {
     $sql_parceiros = "SELECT * FROM parceiros WHERE codigo = '{$_GET['id']}'";
-    $obj_parceiros = mysqli_query($conexao, $sql_parceiros);
+    $obj_parceiros = mysqli_query($conexao, $sql_parceiros) or die(mysqli_error($conexao));
     $parceiro = $obj_parceiros->fetch_object();
 }
 
@@ -48,7 +47,7 @@ if ($_GET['id']) {
 function existe_nome($nome, $conexao)
 {
     $sql_nome = "select * from parceiros where nome = '$nome'";
-    $obj_banco = mysqli_query($conexao, $sql_nome);
+    $obj_banco = mysqli_query($conexao, $sql_nome) or die(mysqli_error($conexao));
     $array_dados = $obj_banco->fetch_array();
 
     if (count($array_dados) > 0) {
@@ -61,30 +60,30 @@ function existe_nome($nome, $conexao)
 ?>
 <div class="navega">
     <ul>
-        <li><a href="<?= URL_SITE ?>inicio">Inicio</a></li>
-        <li><a href="<?= URL_SITE ?>diversos/parceiro">Parceiros</a></li>
+        <li><a href="<?php echo URL_SITE; ?>inicio">Inicio</a></li>
+        <li><a href="<?php echo URL_SITE; ?>diversos/parceiro">Parceiros</a></li>
     </ul>
 </div>
-<div class="user-index" <?= ($_GET['id']) ? " style='display:none'" : ' ' ?>>
+<div class="user-index" <?php echo isset($_GET['id']) ? " style='display:none'" : ' '; ?>>
     <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
     <button class="btn-azul" onclick="abrirListagem()">Listar</button>
 </div>
 
-<div class="user-cadastro" <?= ($_GET['id']) ? " style='display:block'" : '' ?>>
+<div class="user-cadastro" <?php echo isset($_GET['id']) ? " style='display:block'" : ''; ?>>
 
-    <form action="<?= URL_SITE ?>diversos/parceiro" method="post" class="form">
+    <form action="<?php echo URL_SITE;?>diversos/parceiro" method="post" class="form">
         <?php
-        if ($_GET['id']) {
+        if (isset($_GET['id'])) {
             echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
         }
         ?>
-        <input type="text" name="nome" id="nome" value="<?= $parceiro->nome ?>" placeholder="Nome de usuário" required>
+        <input type="text" name="nome" id="nome" value="<?php echo @$parceiro->nome ?>" placeholder="Nome de usuário" required>
         <label id="error"></label>
         <button type="button" onclick="validForm()"
-                id="btn-save">  <?= ($_GET['id']) ? " Salvar" : 'Cadastrar' ?></button>
+                id="btn-save">  <?php echo isset($_GET['id']) ? " Salvar" : 'Cadastrar'; ?></button>
     </form>
 </div>
-<div class="user-listagem" <?= ($_GET['id']) ? " style='display:none'" : '' ?>>
+<div class="user-listagem" <?php echo isset($_GET['id']) ? " style='display:none'" : ''; ?>>
     <table id="customers">
         <tr>
             <th>#</th>
@@ -96,10 +95,10 @@ function existe_nome($nome, $conexao)
         <?php $cont = 1; ?>
         <?php while ($parceiro = $obj_parceiros->fetch_object()) { ?>
             <tr>
-                <td><?= $cont ?></td>
-                <td><?= $parceiro->nome ?></td>
-                <td><?= ($parceiro->status == 1) ? 'Ativo' : 'Inativo' ?></td>
-                <td><a href="<?= URL_SITE ?>diversos/parceiro/edt?id=<?= $parceiro->codigo ?>">Editar</a></td>
+                <td><?php echo $cont; ?></td>
+                <td><?php echo $parceiro->nome; ?></td>
+                <td><?php echo ($parceiro->status == 1) ? 'Ativo' : 'Inativo'; ?></td>
+                <td><a href="<?php echo URL_SITE; ?>diversos/parceiro/edt?id=<?php echo $parceiro->codigo; ?>">Editar</a></td>
             </tr>
             <?php $cont++; ?>
         <?php } ?>

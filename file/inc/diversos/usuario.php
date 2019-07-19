@@ -1,9 +1,9 @@
 <?php
-if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
+if (isset($_POST['nome']) and isset($_POST['senha']) and isset($_POST['confirmacao_senha'])) {
 
     $erros = array();
 
-    if ($_POST['codigo']) {
+    if (isset($_POST['codigo'])) {
 
         if ($_POST['senha'] === $_POST['confirmacao_senha']) {
             $senha = hash('sha512', $_POST['senha']);
@@ -41,13 +41,13 @@ if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
 }
 
 
-$sql_usuarios = "SELECT * FROM USUARIOS limit 5";
-$obj_usuarios = mysqli_query($conexao, $sql_usuarios);
+$sql_usuarios = "SELECT * FROM usuarios limit 5";
+$obj_usuarios = mysqli_query($conexao, $sql_usuarios)or die(mysqli_error($conexao));
 
 
-if ($_GET['id']) {
-    $sql_usuarios = "SELECT * FROM USUARIOS WHERE codigo = '{$_GET['id']}'";
-    $obj_usuarios = mysqli_query($conexao, $sql_usuarios);
+if (isset($_GET['id'])) {
+    $sql_usuarios = "SELECT * FROM usuarios WHERE codigo = '{$_GET['id']}'";
+    $obj_usuarios = mysqli_query($conexao, $sql_usuarios) or die(mysqli_error($conexao));
     $usuario = $obj_usuarios->fetch_object();
 }
 
@@ -71,33 +71,33 @@ function existe_nome($nome, $conexao)
 ?>
 <div class="navega">
     <ul>
-        <li><a href="<?= URL_SITE ?>inicio">Inicio</a></li>
-        <li><a href="<?= URL_SITE ?>diversos/usuario">Usuário</a></li>
+        <li><a href="<?php echo URL_SITE; ?>inicio">Inicio</a></li>
+        <li><a href="<?php echo URL_SITE; ?>diversos/usuario">Usuário</a></li>
     </ul>
 </div>
-<div class="user-index" <?= ($_GET['id']) ? " style='display:none'" : ' ' ?>>
+<div class="user-index" <?php echo isset($_GET['id']) ? " style='display:none'" : ' ';?>>
     <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
     <button class="btn-azul" onclick="abrirListagem()">Listar</button>
 </div>
 
-<div class="user-cadastro" <?= ($_GET['id']) ? " style='display:block'" : '' ?>>
+<div class="user-cadastro" <?php echo isset($_GET['id']) ? " style='display:block'" : ''; ?>>
 
-    <form action="<?= URL_SITE ?>diversos/usuario" method="post" class="form">
+    <form action="<?php echo URL_SITE; ?>diversos/usuario" method="post" class="form">
         <?php
-        if ($_GET['id']) {
+        if (isset($_GET['id'])) {
             echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
         }
         ?>
-        <input type="text" name="nome" id="nome" value="<?= $usuario->nome ?>" placeholder="Nome de usuário" required>
+        <input type="text" name="nome" id="nome" value="<?php echo $usuario->nome; ?>" placeholder="Nome de usuário" required>
         <input type="password" name="senha" id="senha" onblur="validPass()" placeholder="Senha" required>
         <input type="password" name="confirmacao_senha" id="confirmacao_senha" onblur="validPass()"
                placeholder="Repita a senha" required>
         <label id="error">As senhas não conferem</label>
         <button type="button" onclick="validForm()"
-                id="btn-save">  <?= ($_GET['id']) ? " Salvar" : 'Cadastrar' ?></button>
+                id="btn-save">  <?php echo isset($_GET['id']) ?  "Salvar" : 'Cadastrar'; ?></button>
     </form>
 </div>
-<div class="user-listagem" <?= ($_GET['id']) ? " style='display:none'" : '' ?>>
+<div class="user-listagem" <?php echo  isset($_GET['id']) ? " style='display:none'" : ''; ?>>
     <table id="customers">
         <tr>
             <th>#</th>
@@ -109,10 +109,10 @@ function existe_nome($nome, $conexao)
         <?php $cont = 1; ?>
         <?php while ($usuario = $obj_usuarios->fetch_object()) { ?>
             <tr>
-                <td><?= $cont ?></td>
-                <td><?= $usuario->nome ?></td>
-                <td><?= ($usuario->status == 1) ? 'Ativo' : 'Inativo' ?></td>
-                <td><a href="<?= URL_SITE ?>diversos/usuario/edt?id=<?= $usuario->codigo ?>">Editar</a></td>
+                <td><?php echo $cont; ?></td>
+                <td><?php echo $usuario->nome; ?></td>
+                <td><?php echo ($usuario->status == 1) ?  'Ativo': 'Inativo'; ?></td>
+                <td><a href="<?php echo URL_SITE ?>diversos/usuario/edt?id=<?php echo $usuario->codigo ?>">Editar</a></td>
             </tr>
             <?php $cont++; ?>
         <?php } ?>

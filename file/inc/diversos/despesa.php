@@ -1,9 +1,9 @@
 <?php
-if (($_POST['nome']) and ($_POST['vencimento'])) {
+if (isset($_POST['nome']) and isset($_POST['vencimento'])) {
 
     $erros = array();
 
-    if ($_POST['codigo']) {
+    if (isset($_POST['codigo'])) {
         $sql_update = "update despesas set nome = '{$_POST['nome']}' , vencimento = '{$_POST['vencimento']}' where codigo = {$_POST['codigo']}";
         mysqli_query($conexao, $sql_update) or die('Erro ao editar:' . $sql_update);
 
@@ -32,9 +32,9 @@ $sql_despesa = "SELECT * FROM despesas limit 5";
 $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
 
-if ($_GET['id']) {
+if (isset($_GET['id'])) {
     $sql_despesa = "SELECT * FROM despesas WHERE codigo = '{$_GET['id']}'";
-    $obj_despesas = mysqli_query($conexao, $sql_despesa);
+    $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
     $despesa = $obj_despesas->fetch_object();
 }
 
@@ -45,7 +45,7 @@ if ($_GET['id']) {
 function existe_nome($nome, $conexao)
 {
     $sql_nome = "select * from despesas where nome = '$nome'";
-    $obj_banco = mysqli_query($conexao, $sql_nome);
+    $obj_banco = mysqli_query($conexao, $sql_nome) or die(mysqli_error($conexao));
     $array_dados = $obj_banco->fetch_array();
 
     if (count($array_dados) > 0) {
@@ -58,31 +58,31 @@ function existe_nome($nome, $conexao)
 ?>
 <div class="navega">
     <ul>
-        <li><a href="<?= URL_SITE ?>inicio">Inicio</a></li>
-        <li><a href="<?= URL_SITE ?>diversos/despesa">Despesas</a></li>
+        <li><a href="<?php echo URL_SITE; ?>inicio">Inicio</a></li>
+        <li><a href="<?php echo URL_SITE; ?>diversos/despesa">Despesas</a></li>
     </ul>
 </div>
-<div class="user-index" <?= ($_GET['id']) ? " style='display:none'" : ' ' ?>>
+<div class="user-index" <?php echo isset($_GET['id']) ? " style='display:none'" : ' '; ?>>
     <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
     <button class="btn-azul" onclick="abrirListagem()">Listar</button>
 </div>
 
-<div class="user-cadastro" <?= ($_GET['id']) ? " style='display:block'" : '' ?>>
+<div class="user-cadastro" <?php echo isset($_GET['id']) ? " style='display:block'" : ''; ?>>
 
-    <form action="<?= URL_SITE ?>diversos/despesa" method="post" class="form">
+    <form action="<?php echo URL_SITE; ?>diversos/despesa" method="post" class="form">
         <?php
-        if ($_GET['id']) {
+        if (isset($_GET['id'])) {
             echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
         }
         ?>
-        <input type="text" name="nome" id="nome" value="<?= $despesa->nome ?>" placeholder="Nome" required>
-         <input type="number" name="vencimento" value="<?= $despesa->vencimento ?>" id="vencimento" placeholder="01">
+        <input type="text" name="nome" id="nome" value="<?php echo @$despesa->nome; ?>" placeholder="Nome" required>
+        <input type="number" name="vencimento" value="<?php echo @$despesa->vencimento; ?>" id="vencimento" placeholder="01">
         <label id="error"></label>
         <button type="button" onclick="validForm()"
-                id="btn-save">  <?= ($_GET['id']) ? " Salvar" : 'Cadastrar' ?></button>
+                id="btn-save">  <?php echo isset($_GET['id']) ? " Salvar" : 'Cadastrar'; ?></button>
     </form>
 </div>
-<div class="user-listagem" <?= ($_GET['id']) ? " style='display:none'" : '' ?>>
+<div class="user-listagem" <?php echo ($_GET['id']) ? " style='display:none'" : ''; ?>>
     <table id="customers">
         <tr>
             <th>#</th>
@@ -94,10 +94,10 @@ function existe_nome($nome, $conexao)
         <?php $cont = 1; ?>
         <?php while ($despesa = $obj_despesas->fetch_object()) { ?>
             <tr>
-                <td><?= $cont ?></td>
-                <td><?= $despesa->nome ?></td>
-                <td><?= $despesa->vencimento ?></td>
-                <td><a href="<?= URL_SITE ?>diversos/despesa/edt?id=<?= $despesa->codigo ?>">Editar</a></td>
+                <td><?php echo $cont; ?></td>
+                <td><?php echo $despesa->nome; ?></td>
+                <td><?php echo $despesa->vencimento; ?></td>
+                <td><a href="<?php echo URL_SITE; ?>diversos/despesa/edt?id=<?php echo $despesa->codigo; ?>">Editar</a></td>
             </tr>
             <?php $cont++; ?>
         <?php } ?>
