@@ -1,4 +1,4 @@
-﻿<IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteRule ^inicio/?$ inicio.php [NC,L]
   RewriteRule ^404/?$ error_404.php [NC,L]

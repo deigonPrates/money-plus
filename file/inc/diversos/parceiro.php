@@ -30,7 +30,7 @@ if (isset($_POST['nome'])) {
 }
 
 
-$sql_parceiros = "SELECT * FROM parceiros limit 5";
+$sql_parceiros = "SELECT * FROM parceiros order by codigo desc";
 $obj_parceiros = mysqli_query($conexao, $sql_parceiros) or die(mysqli_error($conexao));
 
 

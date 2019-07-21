@@ -28,7 +28,7 @@ if (isset($_POST['nome']) and isset($_POST['vencimento'])) {
 }
 
 
-$sql_despesa = "SELECT * FROM despesas limit 5";
+$sql_despesa = "SELECT * FROM despesas order by codigo desc";
 $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
 

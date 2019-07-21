@@ -1,11 +1,11 @@
 <?php
-$sql_gasto = "SELECT * FROM gastos";
+$sql_gasto = "SELECT * FROM gastos order by codigo desc";
 $obj_gastos = mysqli_query($conexao, $sql_gasto) or die(mysqli_error($conexao));
 
-$sql_parceiro = "SELECT * FROM parceiros";
+$sql_parceiro = "SELECT * FROM parceiros order by codigo desc";
 $obj_parceiros = mysqli_query($conexao, $sql_parceiro) or die(mysqli_error($conexao));
 
-$sql_despesa = "SELECT * FROM despesas";
+$sql_despesa = "SELECT * FROM despesas order by codigo desc";
 $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
 

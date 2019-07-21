@@ -1,8 +1,8 @@
 <?php
-$sql_gasto = "SELECT * FROM gastos";
+$sql_gasto = "SELECT * FROM gastos order by codigo desc";
 $obj_gastos = mysqli_query($conexao, $sql_gasto) or die(mysqli_error($conexao));
 
-$sql_parceiro = "SELECT * FROM parceiros";
+$sql_parceiro = "SELECT * FROM parceiros order by codigo desc";
 $obj_parceiros = mysqli_query($conexao, $sql_parceiro) or die(mysqli_error($conexao));
 
 $sql_rateios = "select T2.descricao, T3.nome, T1.valor,T1.status from rateios as T1

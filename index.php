@@ -11,8 +11,8 @@ if(isset($_SESSION['logado'])){
     <meta charset="UTF-8">
     <meta name="portview" content="width=device-width, initial-scale=1">
     <title> Login </title>
-    <meta name="description" content="ERP Mobiliario">
-    <meta name="keywords" content="ERP Mobiliario, Fincanceiro, ERP, Remoto">
+    <meta name="description" content="Controle Financeiro MOBILE">
+    <meta name="keywords" content="ERP Fincanceiro,Remoto">
     <meta name="robots" content="index,follow">
     <meta name="author" content="Deigon Prates, Rafael Cotrim, Ronni Donato">
     <link rel="stylesheet" href="css/style.css">

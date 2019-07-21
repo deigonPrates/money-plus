@@ -41,7 +41,7 @@ if (isset($_POST['nome']) and isset($_POST['senha']) and isset($_POST['confirmac
 }
 
 
-$sql_usuarios = "SELECT * FROM usuarios limit 5";
+$sql_usuarios = "SELECT * FROM usuarios order by codigo desc";
 $obj_usuarios = mysqli_query($conexao, $sql_usuarios)or die(mysqli_error($conexao));
 
 

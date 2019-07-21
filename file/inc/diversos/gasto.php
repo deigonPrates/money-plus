@@ -1,8 +1,8 @@
 <?php
-$sql_despesa = "SELECT * FROM despesas";
+$sql_despesa = "SELECT * FROM despesas order by codigo desc";
 $obj_despesas = mysqli_query($conexao, $sql_despesa) or die(mysqli_error($conexao));
 
-$sql_gastos = "SELECT * FROM gastos ";
+$sql_gastos = "SELECT * FROM gastos order by codigo desc";
 $obj_gastos = mysqli_query($conexao, $sql_gastos);
 
 if (isset($_POST['despesas_codigo']) and isset($_POST['data'])
