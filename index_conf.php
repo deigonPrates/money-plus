@@ -1,4 +1,4 @@
-<?
+<?php
 require_once './file/inc/conecta.php';
 
 session_start();

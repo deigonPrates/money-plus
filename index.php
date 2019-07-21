@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION['logado']){
+if(isset($_SESSION['logado'])){
     header('location: inicio');
     exit();
 }
@@ -10,7 +10,7 @@ if($_SESSION['logado']){
 <head>
     <meta charset="UTF-8">
     <meta name="portview" content="width=device-width, initial-scale=1">
-    <title> Login CG</title>
+    <title> Login </title>
     <meta name="description" content="ERP Mobiliario">
     <meta name="keywords" content="ERP Mobiliario, Fincanceiro, ERP, Remoto">
     <meta name="robots" content="index,follow">

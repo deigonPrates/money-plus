@@ -1,41 +1,62 @@
-<?
-if (($_POST['nome']) and ($_POST['senha']) and ($_POST['confirmacao_senha'])) {
+<?php
+if (isset($_POST['nome']) and isset($_POST['senha']) and isset($_POST['confirmacao_senha'])) {
 
     $erros = array();
 
-    if ($_POST['senha'] === $_POST['confirmacao_senha']) {
-        if (!existe_nome($_POST['nome'], $conexao)) {
+    if (isset($_POST['codigo'])) {
+
+        if ($_POST['senha'] === $_POST['confirmacao_senha']) {
             $senha = hash('sha512', $_POST['senha']);
-            $sql_insert = "insert into usuarios(nome,senha, status) value('{$_POST['nome']}','{$senha}','1')";
+            $sql_insert = "update usuarios set nome = '{$_POST['nome']}' ,senha = '$senha' where codigo = {$_POST['codigo']}";
             mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
         } else {
-            $erros[] = 'Ja existe esse nome salvo na nossa base, favor use outro';
+            $erros[] = 'As senhas nao conferem';
         }
-
     } else {
-        $erros[] = 'As senhas nao conferem';
+        if ($_POST['senha'] === $_POST['confirmacao_senha']) {
+            if (!existe_nome($_POST['nome'], $conexao)) {
+                $senha = hash('sha512', $_POST['senha']);
+                $sql_insert = "insert into usuarios(nome,senha, status) value('{$_POST['nome']}','{$senha}','1')";
+                mysqli_query($conexao, $sql_insert) or die('Erro ao salvar:' . $sql_insert);
+            } else {
+                $erros[] = 'Ja existe esse nome salvo na nossa base, favor use outro';
+            }
 
+        } else {
+            $erros[] = 'As senhas nao conferem';
+        }
     }
+
 
     if (count($erros) > 0) {
         $error = implode(',', $erros);
         echo "<script>
                         alert('{$error}');
               </script>";
-    }else{
+    } else {
         echo "<script>
                         alert('Operação realizada com sucesso');
               </script>";
     }
 }
 
+
+$sql_usuarios = "SELECT * FROM usuarios limit 5";
+$obj_usuarios = mysqli_query($conexao, $sql_usuarios)or die(mysqli_error($conexao));
+
+
+if (isset($_GET['id'])) {
+    $sql_usuarios = "SELECT * FROM usuarios WHERE codigo = '{$_GET['id']}'";
+    $obj_usuarios = mysqli_query($conexao, $sql_usuarios) or die(mysqli_error($conexao));
+    $usuario = $obj_usuarios->fetch_object();
+}
+
 /**
  * @param $nome
  * @return bool
  */
-function existe_nome($nome,$conexao)
+function existe_nome($nome, $conexao)
 {
-
     $sql_nome = "select * from usuarios where nome = '$nome'";
     $obj_banco = mysqli_query($conexao, $sql_nome);
     $array_dados = $obj_banco->fetch_array();
@@ -48,14 +69,55 @@ function existe_nome($nome,$conexao)
 }
 
 ?>
-<form action="<?= URL_SITE ?>diversos/usuario" method="post" class="form">
-    <input type="text" name="nome" id="nome" placeholder="Nome de usuário" required>
-    <input type="password" name="senha" id="senha" onblur="validPass()" placeholder="Senha" required>
-    <input type="password" name="confirmacao_senha" id="confirmacao_senha" onblur="validPass()"
-           placeholder="Repita a senha" required>
-    <label id="error">As senhas não conferem</label>
-    <button type="button" onclick="validForm()" id="btn-save"> Cadastrar</button>
-</form>
+<div class="navega">
+    <ul>
+        <li><a href="<?php echo URL_SITE; ?>inicio">Inicio</a></li>
+        <li><a href="<?php echo URL_SITE; ?>diversos/usuario">Usuário</a></li>
+    </ul>
+</div>
+<div class="user-index" <?php echo isset($_GET['id']) ? " style='display:none'" : ' ';?>>
+    <button class="btn-verde" onclick="abrirCadastro()">Cadastrar</button>
+    <button class="btn-azul" onclick="abrirListagem()">Listar</button>
+</div>
+
+<div class="user-cadastro" <?php echo isset($_GET['id']) ? " style='display:block'" : ''; ?>>
+
+    <form action="<?php echo URL_SITE; ?>diversos/usuario" method="post" class="form">
+        <?php
+        if (isset($_GET['id'])) {
+            echo "<input type='hidden' value='{$_GET['id']}' name='codigo'>";
+        }
+        ?>
+        <input type="text" name="nome" id="nome" value="<?php echo $usuario->nome; ?>" placeholder="Nome de usuário" required>
+        <input type="password" name="senha" id="senha" onblur="validPass()" placeholder="Senha" required>
+        <input type="password" name="confirmacao_senha" id="confirmacao_senha" onblur="validPass()"
+               placeholder="Repita a senha" required>
+        <label id="error">As senhas não conferem</label>
+        <button type="button" onclick="validForm()"
+                id="btn-save">  <?php echo isset($_GET['id']) ?  "Salvar" : 'Cadastrar'; ?></button>
+    </form>
+</div>
+<div class="user-listagem" <?php echo  isset($_GET['id']) ? " style='display:none'" : ''; ?>>
+    <table id="customers">
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+
+        <?php $cont = 1; ?>
+        <?php while ($usuario = $obj_usuarios->fetch_object()) { ?>
+            <tr>
+                <td><?php echo $cont; ?></td>
+                <td><?php echo $usuario->nome; ?></td>
+                <td><?php echo ($usuario->status == 1) ?  'Ativo': 'Inativo'; ?></td>
+                <td><a href="<?php echo URL_SITE ?>diversos/usuario/edt?id=<?php echo $usuario->codigo ?>">Editar</a></td>
+            </tr>
+            <?php $cont++; ?>
+        <?php } ?>
+    </table>
+</div>
 
 
 <script>
@@ -120,6 +182,21 @@ function existe_nome($nome,$conexao)
 
     }
 
+    function fechaTodasDivs() {
+        $('.user-index').css('display', 'none');
+        $('.user-cadastro').css('display', 'none');
+        $('.user-listagem').css('display', 'none');
+    }
+
+    function abrirCadastro() {
+        fechaTodasDivs();
+        $('.user-cadastro').css('display', 'block');
+    }
+
+    function abrirListagem() {
+        fechaTodasDivs();
+        $('.user-listagem').css('display', 'block');
+    }
 
 </script>
 
